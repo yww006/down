@@ -26,6 +26,7 @@
       heroPreviewBtn: document.getElementById('hero-preview-btn'),
       booksGrid: document.getElementById('books-grid'),
       modal: document.getElementById('book-modal'),
+      modalBackdrop: document.querySelector('.modal-backdrop'),
       modalClose: document.getElementById('modal-close'),
       modalCover: document.getElementById('modal-cover'),
       modalTitle: document.getElementById('modal-title'),
@@ -365,7 +366,7 @@
     // Modal close - use event delegation on modal for backdrop, direct binding for close button
     elements.modal.addEventListener('click', e => {
       // Close on backdrop click
-      if (e.target === elements.modal) {
+      if (e.target === elements.modal || e.target === elements.modalBackdrop) {
         closeModal();
         return;
       }
