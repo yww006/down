@@ -1,0 +1,34 @@
+{
+  "name": "down",
+  "version": "1.0.0",
+  "description": "每日一篇电子书阅读页 - 含 EPUB 解析工具",
+  "main": "index.js",
+  "scripts": {
+    "parse": "node scripts/parse-ebooks.js",
+    "parse:watch": "nodemon scripts/parse-ebooks.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yww006/down.git"
+  },
+  "keywords": [
+    "ebook",
+    "reading",
+    "epub",
+    "daily"
+  ],
+  "author": "yww006",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yww006/down/issues"
+  },
+  "homepage": "https://github.com/yww006/down#readme",
+  "dependencies": {
+    "epub-parser": "^0.2.5",
+    "jszip": "^3.10.2",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
