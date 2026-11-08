@@ -301,8 +301,8 @@
 
   function setModalTab(tab) {
     currentModalTab = tab;
-    // Update tab buttons
-    elements.modalTabs.forEach(t => {
+    // Update tab buttons - re-query to handle cloned nodes
+    document.querySelectorAll('.modal-tab').forEach(t => {
       t.classList.toggle('active', t.dataset.tab === tab);
     });
     // Update panels
