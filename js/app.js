@@ -279,6 +279,8 @@
 
     // Set active tab
     setModalTab(defaultTab);
+    // Re-setup modal tabs in case Rocket Loader interfered
+    setupModalTabs();
 
     elements.modal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -334,6 +336,17 @@
     });
   }
 
+  // Modal tabs - re-query each time to handle dynamic content
+  function setupModalTabs() {
+    const tabs = document.querySelectorAll('.modal-tab');
+    tabs.forEach(tab => {
+      // Remove existing listeners by cloning
+      const newTab = tab.cloneNode(true);
+      tab.parentNode.replaceChild(newTab, tab);
+      newTab.addEventListener('click', () => setModalTab(newTab.dataset.tab));
+    });
+  }
+
   // === Event Listeners ===
   function setupEventListeners() {
     // Modal close
@@ -349,10 +362,8 @@
     elements.heroReadBtn.addEventListener('click', () => openModal(elements.heroReadBtn.dataset.bookId, 'reading'));
     elements.heroPreviewBtn.addEventListener('click', () => openModal(elements.heroPreviewBtn.dataset.bookId, 'catalog'));
 
-    // Modal tabs
-    elements.modalTabs.forEach(tab => {
-      tab.addEventListener('click', () => setModalTab(tab.dataset.tab));
-    });
+    // Modal tabs - setup initially and re-setup when modal opens
+    setupModalTabs();
 
     // Reading controls
     let fontSize = 17; // base px
