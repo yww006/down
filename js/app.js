@@ -281,6 +281,8 @@
     setModalTab(defaultTab);
     // Re-setup modal tabs in case Rocket Loader interfered
     setupModalTabs();
+    // Re-bind close button
+    bindCloseButton();
 
     elements.modal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -347,17 +349,23 @@
     });
   }
 
+  // Modal close - direct binding with re-bind on open
+  function bindCloseButton() {
+    const closeBtn = document.querySelector('.modal-close');
+    if (closeBtn) {
+      // Remove existing listeners by cloning
+      const newBtn = closeBtn.cloneNode(true);
+      closeBtn.parentNode.replaceChild(newBtn, closeBtn);
+      newBtn.addEventListener('click', closeModal);
+    }
+  }
+
   // === Event Listeners ===
   function setupEventListeners() {
-    // Modal close - use event delegation on modal for robustness
+    // Modal close - use event delegation on modal for backdrop, direct binding for close button
     elements.modal.addEventListener('click', e => {
       // Close on backdrop click
       if (e.target === elements.modal) {
-        closeModal();
-        return;
-      }
-      // Close on close button click (handles cloned/recreated elements)
-      if (e.target.closest('.modal-close')) {
         closeModal();
         return;
       }
