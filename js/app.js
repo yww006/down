@@ -349,10 +349,18 @@
 
   // === Event Listeners ===
   function setupEventListeners() {
-    // Modal close
-    elements.modalClose.addEventListener('click', closeModal);
+    // Modal close - use event delegation on modal for robustness
     elements.modal.addEventListener('click', e => {
-      if (e.target === elements.modal) closeModal();
+      // Close on backdrop click
+      if (e.target === elements.modal) {
+        closeModal();
+        return;
+      }
+      // Close on close button click (handles cloned/recreated elements)
+      if (e.target.closest('.modal-close')) {
+        closeModal();
+        return;
+      }
     });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && elements.modal.classList.contains('open')) closeModal();

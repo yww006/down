@@ -358,6 +358,7 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
+  z-index: 10; /* Ensure above backdrop */
 }
 .modal-close:hover { background: var(--accent); border-color: var(--accent); color: #000; }
 .modal-body { padding: 32px; }
