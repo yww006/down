@@ -17,45 +17,84 @@
 
   // === DOM Elements ===
   const elements = {
-    bgLayer: document.getElementById('bg-layer'),
-    heroCover: document.getElementById('hero-cover-img'),
-    heroBadge: document.getElementById('hero-badge'),
-    heroCategory: document.getElementById('hero-category'),
-    heroTitle: document.getElementById('hero-title'),
-    heroAuthor: document.getElementById('hero-author'),
-    heroDesc: document.getElementById('hero-desc'),
-    heroProgressFill: document.getElementById('hero-progress-fill'),
-    heroProgressText: document.getElementById('hero-progress-text'),
-    heroReadBtn: document.getElementById('hero-read-btn'),
-    heroPreviewBtn: document.getElementById('hero-preview-btn'),
-    booksGrid: document.getElementById('books-grid'),
-    modal: document.getElementById('book-modal'),
-    modalBackdrop: document.querySelector('.modal-backdrop'),
-    modalClose: document.getElementById('modal-close'),
-    modalCover: document.getElementById('modal-cover'),
-    modalTitle: document.getElementById('modal-title'),
-    modalAuthor: document.getElementById('modal-author'),
-    modalDesc: document.getElementById('modal-desc'),
-    modalChapters: document.getElementById('modal-chapters'),
-    modalHighlights: document.getElementById('modal-highlights'),
-    modalReading: document.getElementById('modal-reading'),
-    modalMeta: document.getElementById('modal-meta'),
-    modalTabs: document.querySelectorAll('.modal-tab'),
-    readingFontSmaller: document.getElementById('reading-font-smaller'),
-    readingFontLarger: document.getElementById('reading-font-larger'),
-    readingThemeToggle: document.getElementById('reading-theme-toggle'),
-    readingProgressBar: document.getElementById('reading-progress-bar'),
+    bgLayer: null,
+    heroCover: null,
+    heroBadge: null,
+    heroCategory: null,
+    heroTitle: null,
+    heroAuthor: null,
+    heroDesc: null,
+    heroProgressFill: null,
+    heroProgressText: null,
+    heroReadBtn: null,
+    heroPreviewBtn: null,
+    booksGrid: null,
+    modal: null,
+    modalBackdrop: null,
+    modalClose: null,
+    modalCover: null,
+    modalTitle: null,
+    modalAuthor: null,
+    modalDesc: null,
+    modalChapters: null,
+    modalHighlights: null,
+    modalReading: null,
+    modalMeta: null,
+    modalTabs: null,
+    readingFontSmaller: null,
+    readingFontLarger: null,
+    readingThemeToggle: null,
+    readingProgressBar: null,
     // Archive modal
-    archiveBtn: document.getElementById('archive-btn'),
-    archiveModal: document.getElementById('archive-modal'),
-    archiveModalClose: document.getElementById('archive-modal-close'),
-    archiveBreadcrumb: document.getElementById('archive-breadcrumb'),
-    archiveGrid: document.getElementById('archive-grid'),
-    archiveModalBackdrop: document.querySelector('#archive-modal .modal-backdrop')
+    archiveBtn: null,
+    archiveModal: null,
+    archiveModalClose: null,
+    archiveBreadcrumb: null,
+    archiveGrid: null,
+    archiveModalBackdrop: null
   };
+
+  function cacheElements() {
+    elements.bgLayer = document.getElementById('bg-layer');
+    elements.heroCover = document.getElementById('hero-cover-img');
+    elements.heroBadge = document.getElementById('hero-badge');
+    elements.heroCategory = document.getElementById('hero-category');
+    elements.heroTitle = document.getElementById('hero-title');
+    elements.heroAuthor = document.getElementById('hero-author');
+    elements.heroDesc = document.getElementById('hero-desc');
+    elements.heroProgressFill = document.getElementById('hero-progress-fill');
+    elements.heroProgressText = document.getElementById('hero-progress-text');
+    elements.heroReadBtn = document.getElementById('hero-read-btn');
+    elements.heroPreviewBtn = document.getElementById('hero-preview-btn');
+    elements.booksGrid = document.getElementById('books-grid');
+    elements.modal = document.getElementById('book-modal');
+    elements.modalBackdrop = document.querySelector('.modal-backdrop');
+    elements.modalClose = document.getElementById('modal-close');
+    elements.modalCover = document.getElementById('modal-cover');
+    elements.modalTitle = document.getElementById('modal-title');
+    elements.modalAuthor = document.getElementById('modal-author');
+    elements.modalDesc = document.getElementById('modal-desc');
+    elements.modalChapters = document.getElementById('modal-chapters');
+    elements.modalHighlights = document.getElementById('modal-highlights');
+    elements.modalReading = document.getElementById('modal-reading');
+    elements.modalMeta = document.getElementById('modal-meta');
+    elements.modalTabs = document.querySelectorAll('.modal-tab');
+    elements.readingFontSmaller = document.getElementById('reading-font-smaller');
+    elements.readingFontLarger = document.getElementById('reading-font-larger');
+    elements.readingThemeToggle = document.getElementById('reading-theme-toggle');
+    elements.readingProgressBar = document.getElementById('reading-progress-bar');
+    // Archive modal
+    elements.archiveBtn = document.getElementById('archive-btn');
+    elements.archiveModal = document.getElementById('archive-modal');
+    elements.archiveModalClose = document.getElementById('archive-modal-close');
+    elements.archiveBreadcrumb = document.getElementById('archive-breadcrumb');
+    elements.archiveGrid = document.getElementById('archive-grid');
+    elements.archiveModalBackdrop = document.querySelector('#archive-modal .modal-backdrop');
+  }
 
   // === Init ===
   async function init() {
+    cacheElements();
     await loadBooks();
     setupEventListeners();
     renderTodayBook();
